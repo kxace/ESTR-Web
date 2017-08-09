@@ -67,4 +67,19 @@ public interface DBConnection {
    * @param item
    */
   public void saveItem(Item item);
+  
+  /**
+   * Get full name of a user.
+   * @param userId
+   * @return full name of the user
+   */
+  public String getFullname(String userId);
+  
+  /**
+   * Return whether the credential is correct.
+   * @param userId
+   * @param password
+   * @return
+   */
+  public boolean verifyLogin(String userId, String password);
 }
