@@ -18,12 +18,12 @@
 		$('fav-btn').addEventListener('click', loadFavoriteItems);
 		$('recommend-btn').addEventListener('click', loadRecommendedItems);
 
-		validateSession();
+//		validateSession();
 
-//		onSessionValid({
-//			user_id : '1111',
-//			name : 'John Smith'
-//		});
+		onSessionValid({
+			user_id : '1111',
+			name : 'John Smith'
+		});
 	}
 
 	/**
@@ -121,8 +121,8 @@
 			var result = JSON.parse(res);
 			if ('loc' in result) {
 				var loc = result.loc.split(',');
-				lat = loc[0];
-				lng = loc[1];
+//				lat = loc[0];
+//				lng = loc[1];
 			} else {
 				console.warn('Getting location by IP failed.');
 			}
