@@ -23,6 +23,10 @@ import entity.Item;
 import external.ExternalAPI;
 import external.ExternalAPIFactory;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+
 /**
  * Servlet implementation class SearchItem
  */
@@ -30,6 +34,7 @@ import external.ExternalAPIFactory;
 public class SearchItem extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private DBConnection conn = DBConnectionFactory.getDBConnection();
+	private static final Logger LOGGER = Logger.getLogger(SearchItem.class.getName());
 
        
     /**
@@ -50,11 +55,13 @@ public class SearchItem extends HttpServlet {
 			return;
 		}
 		String userId = session.getAttribute("user").toString();
-		
+//		String userId = "1111";
+
 		double lat = Double.parseDouble(request.getParameter("lat"));
 		double lon = Double.parseDouble(request.getParameter("lon"));
 		// Term can be empty or null.
 		String term = request.getParameter("term");
+		LOGGER.log(Level.INFO, "lat:" + lat + ",lon:" + lon);
 		List<Item> items = conn.searchItems(userId, lat, lon, term);
 		List<JSONObject> list = new ArrayList<>();
 		
