@@ -49,6 +49,7 @@ public class ItemHistory extends HttpServlet {
 			return;
 		}
 		String userId = session.getAttribute("user").toString();
+//		String userId = request.getParameter("user_id");
 		Set<Item> items = conn.getFavoriteItems(userId);
 		JSONArray array = new JSONArray();
 		for (Item item : items) {
